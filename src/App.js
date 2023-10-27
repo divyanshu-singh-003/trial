@@ -4,7 +4,35 @@ import msgIcon from './message.svg';
 import sendBtn from './send.svg'
 import userIcon from './user-icon.png'
 import gptImgLogo from './chatgptLogo.svg'
+import {sendMsgToOpenAI} from './openai'
+import {useState} from 'react'
 function App() {
+const[input,setInput] =useState("");
+const[messages,setMessages]=useState([
+  {
+  text:"Hi I am a Legal-Bot designed by Divyanshu singh",
+  isBot:true,
+}
+]);
+
+  const handleSend= async () => {
+
+    const text=input+" If it is not related to law or crime then dont reply";
+    setInput('');
+    setMessages([
+      ...messages,
+      { text,isBot:false}
+      
+    ])
+    const res =await sendMsgToOpenAI(text)
+    setMessages([
+      ...messages,
+      {text, isBot:false},
+      {
+        text:res,isBot:true
+      }
+    ])
+  }
   return (
     <div className="App">
       <div className="sideBar">
@@ -28,16 +56,24 @@ function App() {
         </div>
       </div>
       <div className="main">
-        <div className="chats">
-          <div className="chat">
-            <img src={userIcon} alt="" /><p className="txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce finibus magna eu dui dignissim, non condimentum tortor consequat</p>
-          </div>
+      <div className="chats">
+  {messages.map((message, i) => {
+    const messageText = message.isBot ? message.text : message.text.slice(0, -52); // Remove the last 10 characters if isBot is false
 
-        </div>
+    return (
+      <div key={i} className={message.isBot ? "chat bot" : "chat"}>
+        <img className="chatImg" src={message.isBot ? gptImgLogo : userIcon} alt="" />
+        <p className="txt">{messageText}</p>
+      </div>
+    );
+  })}
+</div>
+
         <div className="chatFooter">
           <div className="inp">
-            <input type="text" placeholder="Send a message"/> <button className="send"><img src={sendBtn} alt="Send" /></button>
+            <input type="text" placeholder="Send a message" value={input} onChange={(e)=>{setInput(e.target.value)}}/> <button className="send" onClick={handleSend}><img src={sendBtn} alt="Send" /></button>
           </div>
+          <p>Only provide Information related to Indian Law</p>
         </div>
       </div>
     </div>
