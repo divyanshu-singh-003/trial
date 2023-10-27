@@ -3,7 +3,7 @@ import gptLogo from './law.svg';
 import msgIcon from './message.svg';
 import sendBtn from './send.svg'
 import userIcon from './user-icon.png'
-import gptImgLogo from './chatgptLogo.svg'
+import gptImgLogo from './cd.jpg'
 import {sendMsgToOpenAI} from './openai'
 import {useState} from 'react'
 function App() {
@@ -41,10 +41,12 @@ const[messages,setMessages]=useState([
           <button className="midBtn">Instructions</button>
           
           <div className="upperSideBottom">
-            <button className="query">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce finibus magna eu dui dignissim, non condimentum tortor consequat. Quisque finibus cursus nunc, eu bibendum enim condimentum in. Etiam urna dolor, convallis nec tincidunt id, imperdiet ut ante. Ut maximus ex ut sodales fringilla. Phasellus porta odio in lobortis commodo. Vestibulum nec elementum neque, at molestie ex. Nulla porta ex nec porttitor pretium. Cras vitae diam nec nulla placerat ultrices. Sed id egestas dolor.
-
+            <button className="query">You can ask questions about criminal law, legal procedures, legal definitions, or seek general legal advice.Please provide details about your legal issue for a more accurate response.
 </button>
-            <button className="query">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce finibus magna eu dui dignissim, non condimentum tortor consequat. Quisque finibus cursus nunc, eu bibendum enim condimentum in. Etiam urna dolor, convallis nec tincidunt id, imperdiet ut ante. Ut maximus ex ut sodales fringilla. Phasellus porta odio in lobortis commodo. Vestibulum nec elementum neque, at molestie ex. Nulla porta ex nec porttitor pretium. Cras vitae diam nec nulla placerat ultrices. Sed id egestas dolor.
+            <button className="query">Your privacy is important. Please do not share personal details or confidential information.Please note that legal advice may differ depending on your jurisdiction. Specify your location if relevant.
+</button>
+<button className="query">You can ask questions about criminal law, legal procedures, legal definitions, or seek general legal advice.Please provide details about your legal issue for a more accurate response.
+In case of emergencies or specific legal issues, please contact local authorities or consult with an attorney.
 
 </button>
           </div>

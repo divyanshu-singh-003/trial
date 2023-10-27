@@ -1,6 +1,6 @@
 const OpenAI=require("openai");
 const openai=new OpenAI({
-    apiKey:"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",
+    apiKey:"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",
     dangerouslyAllowBrowser: true
 });
 
